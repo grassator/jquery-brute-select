@@ -1,0 +1,27 @@
+{
+  "name": "brute-select",
+  "title": "Brute Select",
+  "description": "Simple stylizable custom select input implementation.",
+  "version": "1.0.0",
+  "homepage": "https://github.com/grassator/jquery-brute-select",
+  "author": {
+    "name": "Dmitriy Kubyshkin",
+    "email": "dmitriy@kubyshkin.ru",
+    "url": "http://kubyshkin.ru"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/grassator/jquery-brute-select.git"
+  },
+  "bugs": "https://github.com/grassator/jquery-brute-select/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/grassator/jquery-brute-select/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.1"
+  },
+  "keywords": ["jquery"]
+}

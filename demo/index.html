@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Brute Select Demo</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../dist/brute-select.css">
+	<script src="../libs/jquery/jquery.js"></script>
+	<script src="../dist/brute-select.min.js"></script>
+
+	<!-- Demo-only styles -->
+	<style>	body { padding: 20px; }</style>
+</head>
+<body>
+	<label for="demo-select">Demo Select</label>
+	<select id="demo-select">
+		<option value="value">Some Title</option>
+		<option value="other value">Other Title</option>
+	</select>
+	<script>
+		$('select').bruteSelect();
+	</script>
+</body>
+</html>
