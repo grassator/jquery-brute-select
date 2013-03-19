@@ -1,4 +1,4 @@
-/*! Brute Select - v1.0.0 - 2013-03-17
+/*! Brute Select - v1.0.1 - 2013-03-19
 * https://github.com/grassator/jquery-brute-select
 * Copyright (c) 2013 Dmitriy Kubyshkin; Licensed MIT */
 (function ($) {
