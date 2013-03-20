@@ -1,8 +1,8 @@
 {
   "name": "brute-select",
   "title": "Brute Select",
-  "description": "Simple stylizable custom select input implementation.",
-  "version": "1.0.1",
+  "description": "Simple select implementation with customizable styles. It retains default browser behavior for dropdown list itself while making possible adjusting all aspects of collapsed view of select.",
+  "version": "1.0.2",
   "homepage": "https://github.com/grassator/jquery-brute-select",
   "author": {
     "name": "Dmitriy Kubyshkin",
@@ -23,5 +23,5 @@
   "dependencies": {
     "jquery": ">=1.7.1"
   },
-  "keywords": ["jquery"]
+  "keywords": ["jquery", ""]
 }

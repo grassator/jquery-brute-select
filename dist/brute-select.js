@@ -1,4 +1,4 @@
-/*! Brute Select - v1.0.1 - 2013-03-19
+/*! Brute Select - v1.0.2 - 2013-03-20
 * https://github.com/grassator/jquery-brute-select
 * Copyright (c) 2013 Dmitriy Kubyshkin; Licensed MIT */
 (function ($) {
@@ -59,10 +59,10 @@
 			// By default stripping out tags from formatted option value since
 			// it could allow for XSS vulnerability if option list is generated
 			// by users and not filtered in formatter or on server side
-			if(this.stripTagsInTitle) {
-				this.$title.text(value);
-			} else {
+			if(this.allowHtmlInTitle) {
 				this.$title.html(value);
+			} else {
+				this.$title.text(value);
 			}
 		},
 
@@ -178,7 +178,7 @@
 		generateClassName: bruteSelectPlugin.generateClassName,
 		markup: bruteSelectPlugin.markup,
 		formatter: bruteSelectPlugin.formatter,
-		stripTagsInTitle: true
+		allowHtmlInTitle: false
 	};
 
 	// Providing our function as a jQuery plugin

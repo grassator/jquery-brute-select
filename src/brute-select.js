@@ -63,10 +63,10 @@
 			// By default stripping out tags from formatted option value since
 			// it could allow for XSS vulnerability if option list is generated
 			// by users and not filtered in formatter or on server side
-			if(this.stripTagsInTitle) {
-				this.$title.text(value);
-			} else {
+			if(this.allowHtmlInTitle) {
 				this.$title.html(value);
+			} else {
+				this.$title.text(value);
 			}
 		},
 
@@ -182,7 +182,7 @@
 		generateClassName: bruteSelectPlugin.generateClassName,
 		markup: bruteSelectPlugin.markup,
 		formatter: bruteSelectPlugin.formatter,
-		stripTagsInTitle: true
+		allowHtmlInTitle: false
 	};
 
 	// Providing our function as a jQuery plugin
