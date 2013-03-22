@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>jQuery Brute Select by grassator</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">jQuery Brute Select</h1>
+        <p class="header">Simple stylizable custom select input implementation</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/grassator/jquery-brute-select/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/grassator/jquery-brute-select/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/grassator/jquery-brute-select">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/grassator">grassator</a></p>
+
+
+      </header>
+      <section>
+        <h1>Brute Select</h1>
+
+<p>Simple select implementation with customizable styles. It retains default browser behavior for dropdown list itself while making possible adjusting all aspects of collapsed view of select.</p>
+
+<p>What makes <strong>Brute Select</strong> really different is an ability to customize every aspect of it's looks and behavior by providing configuration functions instead of limited scalar options used in most jQuery plugins.</p>
+
+<h2>Getting Started</h2>
+
+<p>Download the latest version from <a href="https://github.com/grassator/jquery-brute-select/archive/master.zip">github</a>. Then in your web page:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"dist/brute-select.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"dist/brute-select.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'select'</span><span class="p">).</span><span class="nx">bruteSelect</span><span class="p">();</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+<h2>Configuration</h2>
+
+<p>You can pass configuration object to plugin initialization with parameters described below:</p>
+
+<h3>
+<code>baseName</code> string</h3>
+
+<p>Base for all string entities related to brute select including base part of element classes when using default <code>generateClassName</code> function.</p>
+
+<p>Defaults to <code>brute-select</code></p>
+
+<h3>
+<code>generateClassName</code> function (elementNameOrModifier, isModifier)</h3>
+
+<p>Generates appropriate class names for select elements in generated markup. It can be used to adjust class names to conform to specific naming guidelines, like the ones used in <a href="http://bem.info/">BEM</a>. </p>
+
+<p>Default implementation just appends <code>elementNameOrModifier</code> to <code>baseName</code> with <code>-</code> in the middle and can be accessed via <code>$.fn.bruteSelect.generateClassName</code>.</p>
+
+<p>Here is an sample implementation of BEM-style class generation:</p>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">'select'</span><span class="p">).</span><span class="nx">bruteSelect</span><span class="p">({</span>
+    <span class="nx">generateClassName</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">elementNameOrModifier</span><span class="p">,</span> <span class="nx">isModifier</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">cls</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">baseName</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">elementNameOrModifier</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">cls</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">isModifier</span> <span class="o">?</span> <span class="s1">'_'</span> <span class="o">:</span> <span class="s1">'__'</span><span class="p">)</span> <span class="o">+</span> <span class="nx">elementNameOrModifier</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">cls</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>
+<code>formatter</code> function (title, value, $select, $el)</h3>
+
+<p>Allows you to customize the way you format the title of currently selected option inside the select. If you wish to use some html for formatting be sure to disable <code>stripTagsInTitle</code> option.</p>
+
+<p>Default implementation just returns <code>title</code> and can be accessed via <code>$.fn.bruteSelect.formatter</code>.</p>
+
+<p>Must return <code>string</code> value.</p>
+
+<h3>
+<code>allowHtmlInTitle</code> boolean</h3>
+
+<p>Defaults to <code>false</code> meaning that Brute Select will use jQuery <code>text()</code> method to update formatted option title. Allowing html inside the title could allow for XSS vulnerability if option list is generated by users and is not filtered in formatter or on the server side. </p>
+
+<h3>
+<code>markup</code> function ($select)</h3>
+
+<p>You can use this configuration function to customize generated markup or in the case you want to generate markup by some other means (like server side) and provide ready-to-use references to necessary elements for brute select functionality.</p>
+
+<p>Must return <code>object</code> with following properties.</p>
+
+<div class="highlight"><pre><span class="p">{</span>
+    <span class="nx">$el</span><span class="o">:</span> <span class="nx">$</span><span class="p">(...),</span>
+    <span class="nx">$title</span><span class="o">:</span> <span class="nx">$</span><span class="p">(...)</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>Function Context</h3>
+
+<p>All of the configuration functions are merged into special object that contains state of the select and handles user interactions. Apart from ability to access all the other configuration options within configuration function it also provides references to top-most generated markup element via <code>this.$el</code>, current item title via <code>this.$title</code>, and original select via <code>this.$select</code>.</p>
+
+<h3>Global Configuration</h3>
+
+<p>All of the previously listed options are also available in <code>$.fn.bruteSelect.options</code> object that contains default options for the plugin allowing you to adjust them globally.</p>
+
+<h2>Further Extending</h2>
+
+<p>If you need even more control or wish to extend functionality of this plugin, you can extend base class that handles state and user interactions. It is accessible via <code>$.fn.bruteSelect.klass</code>.</p>
+
+<h2>Licensing</h2>
+
+<p>Licensed under permissive <a href="https://github.com/grassator/jquery-brute-select/blob/master/LICENSE-MIT">MIT-style license</a>.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
