@@ -7,11 +7,20 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="stylesheets/brute-select.css">
     <script src="javascripts/scale.fix.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="javascripts/brute-select.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <style>
+    	#select-default,
+    	#select-custom {
+    		width: 100px;
+    	}
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -25,7 +34,7 @@
           <li><a class="buttons github" href="https://github.com/grassator/jquery-brute-select">View On GitHub</a></li>
         </ul>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/grassator">grassator</a></p>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/grassator">Dmitriy Kubyshkin</a></p>
 
 
       </header>
@@ -35,6 +44,52 @@
 <p>Simple select implementation with customizable styles. It retains default browser behavior for dropdown list itself while making possible adjusting all aspects of collapsed view of select.</p>
 
 <p>What makes <strong>Brute Select</strong> really different is an ability to customize every aspect of it's looks and behavior by providing configuration functions instead of limited scalar options used in most jQuery plugins.</p>
+
+<h2>Demo</h2>
+
+<h3>Default params</h3>
+<p>
+	This is how select looks like and behaves by default.
+	<select id="select-default">
+		<option>First</option>
+		<option>Second</option>
+		<option>Third</option>
+	</select>
+</p>
+<script>
+$('#select-default').bruteSelect();
+</script>
+<pre class="highlight"><span class="nt">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
+    $(<span class="s">'#select-default'</span>).bruteSelect();
+</span><span class="nt">&lt;/<span class="title">script</span>&gt;</span>
+</pre>
+
+<h3>Custom Formatter</h3>
+<p>
+	Showing both title and value from select
+	<select id="select-custom">
+		<option value="1">First</option>
+		<option value="2">Second</option>
+		<option value="3">Third</option>
+	</select>
+</p>
+<script>
+$('#select-custom').bruteSelect({
+	formatter: function(title, value) {
+		return title + ' <strong>(' + value + ')</strong>';
+	},
+	allowHtmlInTitle: true
+});
+</script>
+<pre class="highlight"><span class="nt">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
+$(<span class="s">'#select-custom'</span>).bruteSelect({
+    formatter: <span class="kd"><span class="keyword">function</span><span class="params">(title, value)</span> {</span>
+        <span class="keyword">return</span> title + <span class="s">' &lt;strong&gt;('</span> + value + <span class="s">')&lt;/strong&gt;'</span>;
+    },
+    allowHtmlInTitle: <span class="literal">true</span>
+});
+</span><span class="nt">&lt;/<span class="title">script</span>&gt;</span>
+</pre>
 
 <h2>Getting Started</h2>
 
@@ -124,9 +179,6 @@
 
 <p>Licensed under permissive <a href="https://github.com/grassator/jquery-brute-select/blob/master/LICENSE-MIT">MIT-style license</a>.</p>
       </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
-      </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
 		
