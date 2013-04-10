@@ -2,7 +2,7 @@
   "name": "brute-select",
   "title": "Brute Select",
   "description": "Simple select implementation with customizable styles. It retains default browser behavior for dropdown list itself while making possible adjusting all aspects of collapsed view of select.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "homepage": "http://grassator.github.com/jquery-brute-select/",
   "docs": "http://grassator.github.com/jquery-brute-select/",
   "demo": "http://grassator.github.com/jquery-brute-select/",

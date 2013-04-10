@@ -55,7 +55,7 @@
 		/**
 		 * Updates custom title element
 		 */
-		onSelectChange: function() {
+		updateTitle: function() {
 			var value = this.formatter(
 				this.$select.find(':selected').text(), this.$select.val(), this.$select, this.$el
 			);
@@ -82,8 +82,14 @@
 			this.onFocusBlur();
 
 			// Since native select is hidden we need to display option title somewhere
-			this.$select.on('change.' + this.baseName, $.proxy(this.onSelectChange, this));
-			this.onSelectChange();
+			this.$select.on('change.' + this.baseName, $.proxy(this.updateTitle, this));
+			
+			// In order for title to update properly we also need to listen to
+			// key up event (this is necessary mostly in firefox)
+			this.$select.on('keyup.' + this.baseName, $.proxy(this.updateTitle, this));
+			
+			// when initializing we also neet to update select title
+			this.updateTitle();
 		},
 
 		/**
