@@ -1,7 +1,7 @@
 {
   "name": "jquery-brute-select",
   "description": "Simple select implementation with customizable styles. It retains default browser behavior for dropdown list itself while making possible adjusting all aspects of collapsed view of select.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "engines": {
     "node": ">= 0.8.0"
   },
