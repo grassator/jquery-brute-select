@@ -32,6 +32,25 @@
 		strictEqual($.fn.bruteSelect.formatter(title), title);
 	});
 
+	test('Updates title upon initialization', function () {
+		expect(1);
+		var pluginObject = this.$el.bruteSelect().data($.fn.bruteSelect.options.baseName),
+			visibleTitle = pluginObject.$title.text(),
+			realOptionTitle = this.$el.find(':selected').text();
+		strictEqual(visibleTitle, realOptionTitle);
+	});
+
+	test('Updates title upon select change', function () {
+		expect(1);
+		var pluginObject = this.$el.bruteSelect().data($.fn.bruteSelect.options.baseName),
+			initialTitle = pluginObject.$title.text(),
+			newTitle;
+		// Need to trigger change if programmatically changing select
+		this.$el.find('option:last').prop('selected', true).trigger('change');
+		newTitle = pluginObject.$title.text();
+		notEqual(initialTitle, newTitle);
+	});
+
 	test('can provide wrapper and title elements', function () {
 		expect(2);
 		var pluginObject = this.$el.bruteSelect().data($.fn.bruteSelect.options.baseName);

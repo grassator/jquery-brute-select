@@ -51,7 +51,7 @@ $('select').bruteSelect({
 });
 ```
 
-### `formatter` function (title, value, $select, $el)
+### `formatter` function (title, value, $option, $select)
 
 Allows you to customize the way you format the title of currently selected option inside the select. If you wish to use some html for formatting be sure to disable `stripTagsInTitle` option.
 

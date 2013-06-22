@@ -56,9 +56,10 @@
 		 * Updates custom title element
 		 */
 		updateTitle: function() {
-			var value = this.formatter(
-				this.$select.find(':selected').text(), this.$select.val(), this.$select, this.$el
-			);
+			var $option = this.$select.find(':selected'),
+				value = this.formatter(
+					$option.text(), this.$select.val(), $option, this.$select
+				);
 
 			// By default stripping out tags from formatted option value since
 			// it could allow for XSS vulnerability if option list is generated
@@ -125,7 +126,7 @@
 			var $this = $(this),
 				data = $this.data(options.baseName);
 			if (typeof options === 'string') {
-				data[options].apply($this, Array.prototype.slice.call(arguments, 1));
+				data[options].apply($this, [].slice.call(arguments, 1));
 			} else if(!data) {
 				$this.data(options.baseName, new BruteSelect($this, options));
 			}
@@ -149,7 +150,7 @@
 	 * @param {jQuery} $el jQuery top wrapper element
 	 * @context BruteSelect
 	 */
-	bruteSelectPlugin.formatter = function (title, value, $select, $el) {
+	bruteSelectPlugin.formatter = function (title, value, $option, $select) {
 		return title;
 	};
 
@@ -181,7 +182,7 @@
 
 	/**
 	 * Default options for a plugin
-	 * @type {{baseName: (string|Function), generateClassName: Function, formatter: Function, wrap: Function}}
+	 * @type {{baseName: (string|Function), generateClassName: Function, formatter: Function, wrap: Function, allowHtmlInTitle: boolean}}
 	 */
 	bruteSelectPlugin.options = {
 		baseName: 'brute-select',
